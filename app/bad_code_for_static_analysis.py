@@ -10,12 +10,9 @@ To make the project pass CI after the demo, either:
 3. delete it.
 """
 
-import os
-import sys
 
-
-def BadFunctionName(x, y):
-    unused_variable = 123
+def badfunctionname(x, y):
+    #unused_variable = 123
     result=x+y
     return result
 

@@ -2,13 +2,13 @@ name: QA Automation CI
 
 on:
   push:
-    branches: ["main"]
+    branches: ["main", "demo-static-analysis-ci"]
   pull_request:
     branches: ["main"]
 
 jobs:
   quality-checks:
-    name: Static analysis and unit tests
+    name: Static analysis, security scan, and tests
     runs-on: ubuntu-latest
 
     steps:
@@ -25,10 +25,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run static code analysis
+      - name: Run Ruff static analysis
         run: |
           ruff check .
 
-      - name: Run unit tests
+      - name: Run Pylint code quality analysis
+        run: |
+          pylint app tests
+
+      - name: Run Bandit security analysis
+        run: |
+          bandit -r app
+
+      - name: Run automated tests
         run: |
           pytest -v

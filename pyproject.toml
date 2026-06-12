@@ -18,3 +18,22 @@ select = [
     "N",   # naming conventions
     "UP",  # modern Python suggestions
 ]
+[tool.pylint.main]
+py-version = "3.11"
+ignore = [".venv"]
+
+[tool.pylint.messages_control]
+disable = [
+    "missing-module-docstring",
+    "missing-function-docstring",
+    "missing-class-docstring",
+    "too-few-public-methods",
+    "duplicate-code",
+]
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
