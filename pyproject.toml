@@ -1,0 +1,20 @@
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+# During the demo, we want ruff to check the intentionally bad file too.
+# After explaining static analysis, you can fix or remove app/bad_code_for_static_analysis.py.
+exclude = [
+    ".git",
+    ".venv",
+    "__pycache__",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # import sorting
+    "N",   # naming conventions
+    "UP",  # modern Python suggestions
+]
